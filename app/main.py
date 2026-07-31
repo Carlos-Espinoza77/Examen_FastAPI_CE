@@ -3,9 +3,9 @@ from fastapi import FastAPI
 
 #Se crea la instancia principal de la aplicacion FASTAPI
 app = FastAPI(
-    title="Examen FastAPI",
-    description="API REST de usuarios, publicaciones y comentarios",
-    version="1.0.0", #versión inicial del proyecto a implementar
+    title=settings.app_name,
+    description=settings.app_description,
+    version=settings.app_version,
 )
 
 #Corresponde a la ruta principal de la aplicación
@@ -14,3 +14,5 @@ def inicio() -> dict[str, str]: #indica que la función devuelve un diccionario 
     return {
         "message": "La aplicación FastAPI funciona correctamente" #FASTAPI convierte automáticamente este diccionario en JSON
     }
+
+from app.config import settings
