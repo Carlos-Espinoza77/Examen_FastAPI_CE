@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 
 from app.config import settings
+from app.database import models
 from app.database.database import Base, engine
 
 #Se crea la instancia principal de la aplicacion FASTAPI
