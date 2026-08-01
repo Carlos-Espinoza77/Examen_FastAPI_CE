@@ -17,3 +17,19 @@ def get_comments(db: Session = Depends(get_db)):
 def create_comment(comment: CommentCreate, db: Session = Depends(get_db)):
     return CommentService.create(db, comment)
 
+@router.put("/{comment_id}", response_model=CommentResponse)
+def update_comment(
+    comment_id: int,
+    comment: CommentCreate,
+    db: Session = Depends(get_db),
+):
+    return CommentService.update(db, comment_id, comment)
+
+
+@router.delete("/{comment_id}")
+def delete_comment(
+    comment_id: int,
+    db: Session = Depends(get_db),
+):
+    CommentService.delete(db, comment_id)
+    return {"message": "Comentario eliminado"}
