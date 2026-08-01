@@ -13,3 +13,11 @@ class PostService:
     @staticmethod
     def create(db: Session, post: PostCreate):
         return PostRepository.create(db, post)
+
+    @staticmethod
+    def update(db: Session, post_id: int, post: PostCreate):
+        return PostRepository.update(db, post_id, post)
+
+    @staticmethod
+    def delete(db: Session, post_id: int):
+        return PostRepository.delete(db, post_id)

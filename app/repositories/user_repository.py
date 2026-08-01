@@ -26,3 +26,30 @@ class UserRepository:
         db.refresh(db_user)
 
         return db_user
+
+    @staticmethod
+    def update(db: Session, user_id: int, user: UserCreate):
+        db_user = db.query(User).filter(User.id == user_id).first()
+
+        if not db_user:
+            return None
+
+        db_user.name = user.name
+        db_user.email = user.email
+
+        db.commit()
+        db.refresh(db_user)
+
+        return db_user
+
+    @staticmethod
+    def delete(db: Session, user_id: int):
+        db_user = db.query(User).filter(User.id == user_id).first()
+
+        if not db_user:
+            return None
+
+        db.delete(db_user)
+        db.commit()
+
+        return db_user

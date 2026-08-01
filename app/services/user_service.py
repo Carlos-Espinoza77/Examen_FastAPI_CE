@@ -17,3 +17,11 @@ class UserService:
     @staticmethod
     def create(db: Session, user: UserCreate):
         return UserRepository.create(db, user)
+
+    @staticmethod
+    def update(db: Session, user_id: int, user: UserCreate):
+        return UserRepository.update(db, user_id, user)
+
+    @staticmethod
+    def delete(db: Session, user_id: int):
+        return UserRepository.delete(db, user_id)
