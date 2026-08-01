@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 class CommentBase(BaseModel):
     content: str
+    post_id: int
 
 class CommentCreate(CommentBase):
     pass
