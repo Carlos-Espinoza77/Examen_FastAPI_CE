@@ -20,3 +20,20 @@ def create_post(
     db: Session = Depends(get_db),
 ):
     return PostService.create(db, post)
+
+@router.put("/{post_id}", response_model=PostResponse)
+def update_post(
+    post_id: int,
+    post: PostCreate,
+    db: Session = Depends(get_db),
+):
+    return PostService.update(db, post_id, post)
+
+
+@router.delete("/{post_id}")
+def delete_post(
+    post_id: int,
+    db: Session = Depends(get_db),
+):
+    PostService.delete(db, post_id)
+    return {"message": "Post eliminado"}
